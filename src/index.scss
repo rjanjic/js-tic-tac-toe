@@ -24,6 +24,10 @@ body {
     width: 150px;
     height: 150px;
 
+    &--finished {
+        pointer-events: none;
+    }
+
     &--win::before {
         content: '';
         display: block;
