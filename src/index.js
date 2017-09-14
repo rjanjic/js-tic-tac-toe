@@ -175,6 +175,14 @@ const getRandomPosition = (rows, cols) => {
     return { y, x };
 };
 
+const clearPaper = () => {
+    const boards = document.querySelectorAll('.container');
+    for (const el of boards) {
+        el.remove();
+    }
+    games.length = 0;
+};
+
 const startGame = () => {
     win = [];
     state = 'ongoing';
@@ -193,7 +201,7 @@ const startGame = () => {
     const { width, height } = pageEl.getBoundingClientRect();
     const cols = ~~((height - 40) / 150);
     const rows = ~~((width - 60) / 150);
-    if (games.length === cols * rows) return;
+    if (games.length === cols * rows) clearPaper();
     const position = getRandomPosition(rows, cols);
 
     containerEl.style.left = `${position.y * 150 + 120}px`;
