@@ -1,5 +1,6 @@
 import './index.scss';
 
+const pageEl = document.getElementById('js-page');
 const humanWinsEl = document.getElementById('js-human-wins');
 const aiWinsEl = document.getElementById('js-ai-wins');
 
@@ -189,20 +190,30 @@ const startGame = () => {
         containerEl.appendChild(fieldEl);
     }
 
-    const cols = ~~(window.innerHeight / 150);
-    const rows = ~~(window.innerWidth / 150);
-    if (games.length === cols * rows - 1) return;
+    const { width, height } = pageEl.getBoundingClientRect();
+    const cols = ~~((height - 40) / 150);
+    const rows = ~~((width - 60) / 150);
+    if (games.length === cols * rows) return;
     const position = getRandomPosition(rows, cols);
 
-    containerEl.style.left = `${position.y * 150}px`;
-    containerEl.style.top = `${position.x * 150}px`;
+    containerEl.style.left = `${position.y * 150 + 120}px`;
+    containerEl.style.top = `${position.x * 150 + 20}px`;
     containerEl.style.transform = `rotate(${Math.random() >= 0.5 ? '-' : ''}${Math.floor(Math.random() * 30)}deg)`;
 
-    document.body.appendChild(containerEl);
+    pageEl.appendChild(containerEl);
 
     if (AI === 'X') {
         makeAImove(containerEl);
     }
 };
+
+const handlePenMove = pen => ({ pageX, pageY }) => {
+    pen.style.left = pageX + 'px';
+    pen.style.top = pageY + 'px';
+};
+
+const penEl = document.getElementById('js-pencil');
+
+pageEl.addEventListener('mousemove', handlePenMove(penEl));
 
 startGame();

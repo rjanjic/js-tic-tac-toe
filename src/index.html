@@ -6,13 +6,23 @@
     <title>Tic-Tac-Toe</title>
 </head>
 <body>
-    <div class="state" id="js-state">
-        <div>
-            You: <div class="wins" id="js-human-wins"></div>
+    <div class="page" id="js-page">
+        <div class="page__hole page__hole--top"></div>
+        <div class="page__hole page__hole--center"></div>
+        <div class="page__hole page__hole--bottom"></div>
+        <div class="state" id="js-state">
+            <div>
+                You:
+                <div class="wins" id="js-human-wins"></div>
+            </div>
+            <div>
+                AI:
+                <div class="wins" id="js-ai-wins"></div>
+            </div>
         </div>
-        <div>
-            AI: <div class="wins" id="js-ai-wins"></div>
-        </div>
+    </div>
+    <div class="pencil" id="js-pencil">
+        <div class="pencil__inner"></div>
     </div>
     <script type="text/javascript" src="%CDN_URL%main.js"></script>
 </body>
