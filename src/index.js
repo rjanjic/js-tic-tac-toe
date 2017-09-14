@@ -199,6 +199,7 @@ const startGame = () => {
     containerEl.style.left = `${position.y * 150 + 120}px`;
     containerEl.style.top = `${position.x * 150 + 20}px`;
     containerEl.style.transform = `rotate(${Math.random() >= 0.5 ? '-' : ''}${Math.floor(Math.random() * 30)}deg)`;
+    containerEl.classList.add(`ai-${AI}`);
 
     pageEl.appendChild(containerEl);
 

@@ -152,6 +152,10 @@ body {
             top: 50%;
             border-top: 2px solid #000;
             width: 100%;
+
+            .ai-X & {
+                border-color: #1266c2;
+            }
         }
 
         &::before {
@@ -175,6 +179,10 @@ body {
             height: 80%;
             top: 10%;
             left: 14%;
+
+            .ai-O & {
+                border-color: #1266c2;
+            }
         }
     }
 
