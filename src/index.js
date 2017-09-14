@@ -140,27 +140,31 @@ const handleClick = (containerEl, el, index) => () => {
     el.classList.add(`field--${HUMAN}`);
     map[index] = HUMAN;
 
-    makeAImove(containerEl);
+    requestAnimationFrame(() => {
+        makeAImove(containerEl);
 
-    if (isGameFinished(map)) {
-        containerEl.classList.add('container--finished');
-        const winEl = document.createElement('span');
-        if (state === HUMAN) {
-            humanWinsEl.appendChild(winEl);
+        if (isGameFinished(map)) {
+            containerEl.classList.add('container--finished');
+            const winEl = document.createElement('span');
+            if (state === HUMAN) {
+                humanWinsEl.appendChild(winEl);
+            }
+
+            if (state === AI) {
+                aiWinsEl.appendChild(winEl);
+            }
+
+            if (state === 'X' || state === 'O') {
+                containerEl.classList.add('container--win', `container--${win[0]}-${win[1]}`);
+            }
+
+            HUMAN = HUMAN === 'X' ? 'O' : 'X';
+            AI = AI === 'X' ? 'O' : 'X';
+            requestAnimationFrame(() => {
+                startGame();
+            });
         }
-
-        if (state === AI) {
-            aiWinsEl.appendChild(winEl);
-        }
-
-        if (state === 'X' || state === 'O') {
-            containerEl.classList.add('container--win', `container--${win[0]}-${win[1]}`);
-        }
-
-        HUMAN = HUMAN === 'X' ? 'O' : 'X';
-        AI = AI === 'X' ? 'O' : 'X';
-        startGame();
-    }
+    });
 };
 
 const getRandomNumber = max => Math.floor(Math.random() * max);
@@ -212,7 +216,9 @@ const startGame = () => {
     pageEl.appendChild(containerEl);
 
     if (AI === 'X') {
-        makeAImove(containerEl);
+        requestAnimationFrame(() => {
+            makeAImove(containerEl);
+        });
     }
 };
 
