@@ -158,8 +158,7 @@ const handleClick = (containerEl, el, index) => () => {
                 containerEl.classList.add('container--win', `container--${win[0]}-${win[1]}`);
             }
 
-            HUMAN = HUMAN === 'X' ? 'O' : 'X';
-            AI = AI === 'X' ? 'O' : 'X';
+            [HUMAN, AI] = [AI, HUMAN];
             requestAnimationFrame(() => {
                 startGame();
             });
