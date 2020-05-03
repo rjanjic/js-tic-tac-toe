@@ -1,279 +1,296 @@
-@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower');
 
-*, *::before, *::after {
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Indie Flower';
-    background-color: #cfcfbc;
+  font-family: 'Indie Flower';
+  background-color: #cfcfbc;
 }
 
 .page {
-    cursor: none;
-    background: linear-gradient(180deg, #fff 29px, #00b0d7 0);
-    background-size: 100% 30px;
+  cursor: none;
+  background: linear-gradient(180deg, #fff 29px, #00b0d7 0);
+  background-size: 100% 30px;
+  position: absolute;
+  height: 538px;
+  width: 600px;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%) rotate(5deg);
+  box-shadow: 0 0 2px 0 #000;
+  padding: 10px;
+
+  &::after {
+    content: '';
     position: absolute;
-    height: 538px;
-    width: 600px;
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%) rotate(5deg);
-    box-shadow: 0 0 2px 0 #000;
-    padding: 10px;
+    width: 0;
+    top: 0;
+    left: 20%;
+    bottom: 0;
+    border-left: 1px solid #f00;
+    z-index: -1;
+  }
 
-    &::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        top: 0;
-        left: 20%;
-        bottom: 0;
-        border-left: 1px solid #f00;
-        z-index: -1;
+  &__hole {
+    position: absolute;
+    left: 45px;
+    height: 25px;
+    width: 25px;
+    background: #cfcfbc;
+    border-radius: 50%;
+    box-shadow: inset 0 0 2px 0 #000;
+
+    &--top {
+      top: 45px;
     }
 
-    &__hole {
-        position: absolute;
-        left: 45px;
-        height: 25px;
-        width: 25px;
-        background: #cfcfbc;
-        border-radius: 50%;
-        box-shadow: inset 0 0 2px 0 #000;
-
-        &--top {
-            top: 45px;
-        }
-
-        &--center {
-            top: 50%;
-        }
-
-        &--bottom {
-            bottom: 45px;
-        }
+    &--center {
+      top: 50%;
     }
+
+    &--bottom {
+      bottom: 45px;
+    }
+  }
 }
 
 .container {
-    user-select: none;
+  user-select: none;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+
+  &--finished {
+    pointer-events: none;
+  }
+
+  &--win::before {
+    content: '';
+    display: block;
     position: absolute;
-    width: 150px;
-    height: 150px;
+    width: 100%;
+    border-top: 2px solid #f00;
+    z-index: 1;
+  }
 
-    &--finished {
-        pointer-events: none;
-    }
+  &--0-2::before {
+    top: 25px;
+  }
 
-    &--win::before {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 100%;
-        border-top: 2px solid #f00;
-        z-index: 1;
-    }
+  &--3-5::before {
+    top: 75px;
+  }
 
-    &--0-2::before {
-        top: 25px;
-    }
+  &--6-8::before {
+    top: 125px;
+  }
 
-    &--3-5::before {
-        top: 75px;
-    }
+  &--0-6::before {
+    transform: rotate(90deg) translateX(75px) translateY(50px);
+  }
 
-    &--6-8::before {
-        top: 125px;
-    }
+  &--1-7::before {
+    transform: rotate(90deg) translateX(75px);
+  }
 
-    &--0-6::before {
-        transform: rotate(90deg) translateX(75px) translateY(50px);
-    }
+  &--2-8::before {
+    transform: rotate(90deg) translateX(75px) translateY(-50px);
+  }
 
-    &--1-7::before {
-        transform: rotate(90deg) translateX(75px);
-    }
+  &--0-8::before {
+    top: 75px;
+    transform: rotate(45deg) scale(1.25, 1);
+  }
 
-    &--2-8::before {
-        transform: rotate(90deg) translateX(75px) translateY(-50px);
-    }
-
-    &--0-8::before {
-        top: 75px;
-        transform: rotate(45deg) scale(1.25, 1);
-    }
-
-    &--2-6::before {
-        top: 76px;
-        transform: rotate(-45deg) scale(1.25, 1);
-    }
+  &--2-6::before {
+    top: 76px;
+    transform: rotate(-45deg) scale(1.25, 1);
+  }
 }
 
 .field {
-    float: left;
-    width: 50px;
-    height: 50px;
-    border: 1px solid;
-    font-size: 50px;
-    font-family: monospace;
-    text-align: center;
-    line-height: 50px;
-    position: relative;
-    border-right: 0;
-    border-bottom: 0;
+  float: left;
+  width: 50px;
+  height: 50px;
+  border: 1px solid;
+  font-size: 50px;
+  font-family: monospace;
+  text-align: center;
+  line-height: 50px;
+  position: relative;
+  border-right: 0;
+  border-bottom: 0;
 
-    &:first-child {
-        border-left: 0;
-    }
+  &:first-child {
+    border-left: 0;
+  }
 
-    &:nth-child(4) {
-        border-left: 0;
-    }
+  &:nth-child(4) {
+    border-left: 0;
+  }
 
-    &:nth-child(7) {
-        border-left: 0;
-    }
+  &:nth-child(7) {
+    border-left: 0;
+  }
 
-    &:nth-child(-n+3) {
-        border-top: 0;
-    }
+  &:nth-child(-n + 3) {
+    border-top: 0;
+  }
 
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 0;
+  }
+
+  &--X {
     &::before,
     &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 0;
+      top: 50%;
+      border-top: 2px solid #000;
+      width: 100%;
+
+      .ai-X & {
+        border-color: #1266c2;
+      }
     }
 
-    &--X {
-        &::before,
-        &::after {
-            top: 50%;
-            border-top: 2px solid #000;
-            width: 100%;
-
-            .ai-X & {
-                border-color: #1266c2;
-            }
-        }
-
-        &::before {
-            transform: rotate(45deg);
-        }
-
-        &::after {
-            transition-delay: .2s;
-            transform: rotate(-45deg);
-        }
+    &::before {
+      transform: rotate(45deg);
     }
 
-    &--O {
-        &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            border: 2px solid #000;
-            border-radius: 100%;
-            width: 70%;
-            height: 80%;
-            top: 10%;
-            left: 14%;
-
-            .ai-O & {
-                border-color: #1266c2;
-            }
-        }
+    &::after {
+      transition-delay: 0.2s;
+      transform: rotate(-45deg);
     }
+  }
 
-    &:not(.field--X):not(.field--O) {
-        &:hover {
-            background-color: rgba(0, 0, 0, .15);
-        }
+  &--O {
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      border: 2px solid #000;
+      border-radius: 100%;
+      width: 70%;
+      height: 80%;
+      top: 10%;
+      left: 14%;
+
+      .ai-O & {
+        border-color: #1266c2;
+      }
     }
+  }
+
+  &:not(.field--X):not(.field--O) {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.15);
+    }
+  }
 }
 
 .state {
-    font-size: 18px;
-    position: absolute;
-    bottom: 0;
-    left: 130px;
+  font-size: 18px;
+  position: absolute;
+  bottom: 0;
+  left: 130px;
 }
 
 .wins {
-    display: inline-block;
+  display: inline-block;
 
-    &::after {
-        display: block;
-        content: '';
-        clear: both;
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
+  span {
+    height: 15px;
+    border-left: 2px solid;
+    float: left;
+    margin-right: 3px;
+
+    &:nth-child(5n) {
+      transform: rotate(60deg) scale(1, 1.7) translateX(-6px) translateY(6px);
     }
-
-    span {
-        height: 15px;
-        border-left: 2px solid;
-        float: left;
-        margin-right: 3px;
-
-        &:nth-child(5n) {
-            transform: rotate(60deg) scale(1, 1.7) translateX(-6px) translateY(6px);
-        }
-    }
+  }
 }
 
 .pencil {
-    width: 480px;
-    height: 20px;
+  width: 480px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 0 50px 50px 0;
+  transform: rotate(135deg) translateX(-85px) translateY(179px);
+  z-index: 1;
+  pointer-events: none;
+
+  &:before {
+    content: 'HB 2';
+    top: 4px;
+    left: 100px;
+    color: #000;
+    font-size: 8px;
+    text-transform: uppercase;
+    font-family: monospace;
+    font-weight: bold;
     position: absolute;
-    left: 0;
-    top: 0;
-    border-radius: 0 50px 50px 0;
-    transform: rotate(135deg) translateX(-85px) translateY(179px);
     z-index: 1;
-    pointer-events: none;
+  }
 
-    &:before {
-        content: "HB 2";
-        top: 4px;
-        left: 100px;
-        color: #000;
-        font-size: 8px;
-        text-transform: uppercase;
-        font-family: monospace;
-        font-weight: bold;
-        position: absolute;
-        z-index: 1;
+  &__inner {
+    position: absolute;
+    border-radius: 10px 0 0 10px;
+    left: 40px;
+    top: 0;
+    width: 400px;
+    height: 20px;
+    background-image: linear-gradient(
+        90deg,
+        #d94d55,
+        #db4a53 15px,
+        #999 0,
+        #d7d7d7 20px,
+        hsla(0, 0%, 100%, 0) 0
+      ),
+      linear-gradient(
+        180deg,
+        #363100,
+        #d2cfb5 5px,
+        #fadc0b 0,
+        #aca67d 15px,
+        #2c2b24 0
+      );
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      right: -40px;
+      width: 0;
+      height: 0;
+      border-style: solid;
     }
 
-    &__inner {
-        position: absolute;
-        border-radius: 10px 0 0 10px;
-        left: 40px;
-        top: 0;
-        width: 400px;
-        height: 20px;
-        background-image: linear-gradient(90deg, #d94d55, #db4a53 15px, #999 0, #d7d7d7 20px, hsla(0, 0%, 100%, 0) 0), linear-gradient(180deg, #363100, #d2cfb5 5px, #fadc0b 0, #aca67d 15px, #2c2b24 0);
-
-        &::before,
-        &::after {
-            content: '';
-            position: absolute;
-            right: -40px;
-            width: 0;
-            height: 0;
-            border-style: solid;
-        }
-
-        &::before {
-            border-width: 10px 0 10px 40px;
-            border-color: transparent transparent transparent #edc9a6;
-        }
-
-        &::after {
-            top: 5px;
-            border-width: 5px 0 5px 20px;
-            border-color: transparent transparent transparent #222;
-        }
+    &::before {
+      border-width: 10px 0 10px 40px;
+      border-color: transparent transparent transparent #edc9a6;
     }
+
+    &::after {
+      top: 5px;
+      border-width: 5px 0 5px 20px;
+      border-color: transparent transparent transparent #222;
+    }
+  }
 }
