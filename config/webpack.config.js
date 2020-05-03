@@ -117,7 +117,6 @@ module.exports = {
               ident: 'postcss',
               plugins: () => [
                 require('cssnano'),
-                require('postcss-flexbugs-fixes'),
                 autoprefixer({
                   browsers: ['>1%', 'last 4 versions', 'Firefox ESR'],
                   flexbox: 'no-2009',
