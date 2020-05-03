@@ -1,6 +1,6 @@
 # JavaScript Tic-Tac-Toe Game
 
-DEV env: `yarn && yarn start`
+DEV env: `yarn && yarn dev`
 
 Production build: `yarn build`
 
